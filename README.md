@@ -7,3 +7,10 @@
 - Database : MySQL
 - ORM : [GORM](https://github.com/go-gorm/gorm)
 - Architecture : Clean Architecture
+
+
+# Start
+
+```bash
+docker-compose up -d
+```
