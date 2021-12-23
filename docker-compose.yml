@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    container_name: go-rest-api-mysql01
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    ports:
+      # 公開ポートを指定
+      - "3306:3306"
+    volumes:
+      - './docker/mysql/data:/var/lib/mysql'
+      - './docker/mysql/conf:/etc/mysql/conf.d'
+      - './docker/mysql/initdb:/docker-entrypoint-initdb.d'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: go_rest_api
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
+    volumes:
+      - ./:/go/src/go-rest-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
