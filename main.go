@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/ga-tcho/go-rest-api/infrastructure"
 
 func main() {
-	fmt.Println("Hello golang from docker!")
+	infrastructure.Init()
 }

@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: ./docker/api/Dockerfile
     volumes:
-      - ./:/go/src/go-rest-api
+      - ./:/go/src/github.com/ga-tcho/go-rest-api
     ports:
       - "8080:8080"
     depends_on:
